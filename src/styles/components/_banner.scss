@@ -1,0 +1,39 @@
+
+.gzly-copyright-banner {
+  z-index: 9999;
+  width: calc(100% - 160px);
+  height: 50px;
+  right: 0;
+  bottom: 0;
+  position: fixed;
+  background-color: #F2F2F2;
+  border-bottom: 5px solid #4889FF;
+  box-shadow: 0 0 20px black;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+.gzly-copyright-banner .gzly-logo {
+  width: 150px;
+  margin-left: -10x;
+}
+.gzly-copyright-banner .gzly-logo-text {
+  width: 150px;
+}
+.gzly-copyright-banner, .gzly-copyright-banner a {
+  color: black;
+}
+.gzly-copyright-banner p {
+  font-size: 15px;
+  margin: 0;
+}
+
+#wpwrap {
+  padding-bottom: 50px;
+}
+
+#wpcontent {
+  border-top: 5px solid #4889FF;
+}
