@@ -18,7 +18,7 @@ add_action('admin_notices', function() {
 // Funktion zur Darstellung der Metabox
 function gzly_banner() {
     // Hier den HTML-Inhalt deines Banners einfügen
-    $logo = file_get_contents(__DIR__.'/../public/assets/logo.svg');
+    $logo = file_get_contents(__DIR__.'/../../public/assets/logo.svg');
     echo "
 <div class=\"gzly-copyright-banner\">
     <div class='gzly-text'>

@@ -9,7 +9,7 @@ use RecursiveIteratorIterator;
  *
  * @package           gzly-portfolio
  * @author            grizzly.web (Sebastian Müller)
- * @copyright         2023 Sebastian Müller (grizzly.web)
+ * @copyright         2023 grizzly.web (Sebastian Müller)
  * @license           GPL-2.0-or-later
  *
  * @wordpress-plugin
@@ -24,6 +24,9 @@ use RecursiveIteratorIterator;
  * LICENSE: GPLv2
  * LICENSE_URI: https://www.gnu.org/licenses/gpl-2.0.html).
  */
+if ( ! defined( 'ABSPATH' ) ) {
+    exit; // Exit if accessed directly
+}
 
 function include_recursive_files($directory, $file_extensions = ['php']) {
     $directory_iterator = new RecursiveDirectoryIterator($directory);
@@ -59,12 +62,7 @@ function include_recursive_files($directory, $file_extensions = ['php']) {
     }
 }
 
-if ( ! defined( 'ABSPATH' ) ) {
-    exit; // Exit if accessed directly
-}
-
 include_recursive_files(__DIR__ .'/includes');
-
 
 add_action('init', function () {
     if (isset($_GET['demo-data'])) {
