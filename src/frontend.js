@@ -1,10 +1,11 @@
-import ReactDOM from "react-dom";
+import { createRoot } from 'react-dom/client';
 import App from "./frontend/App";
 
 const init = event => {
     const elements = document.getElementsByClassName('gzly-hauptsache-portfolio-placeholder');
     for (let element of elements) {
-        ReactDOM.render(<div><App settings={JSON.parse(element.getAttribute('data-settings'))}/></div>, element)
+        const root = createRoot(element)
+        root.render(<div><App settings={JSON.parse(element.getAttribute('data-settings'))}/></div>)
     }
 };
 if (document.readyState === "loading") {
