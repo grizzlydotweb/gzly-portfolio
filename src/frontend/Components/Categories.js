@@ -17,6 +17,7 @@ export default function Categories({
         const selectedClass = currentCategories.includes(cat.slug) ? className + '--selected' : '';
         return (
             <button
+                key={cat.slug}
                 className={[className, selectedClass].join(' ')}
                 value={cat.slug}
                 onClick={e => {

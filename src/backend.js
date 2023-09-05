@@ -76,11 +76,11 @@ registerBlockType(name, {
                     >
                         <ToolsPanelItem
                             isShownByDefault
-                            hasValue={!!data.parent_category}
+                            hasValue={() => !!data.parent_category}
                         >
                             <SelectControl
                                 label={__('Choose parent category')}
-                                value={(currentParentCategorySlug = data.parent_category?.slug) ? currentParentCategorySlug : null}
+                                value={(currentParentCategorySlug = data.parent_category?.slug) ? currentParentCategorySlug : ''}
                                 onChange={value => {
                                     let category = categories.find(cat => cat.slug === value);
                                     setData({
@@ -94,7 +94,7 @@ registerBlockType(name, {
 
                         <ToolsPanelItem
                             isShownByDefault
-                            hasValue={!!data.parent_category}
+                            hasValue={() => !!data.parent_category}
                         >
                             <RangeControl
                                 label={__('Row Height')}
@@ -114,11 +114,11 @@ registerBlockType(name, {
                     >
                         <ToolsPanelItem
                             isShownByDefault
-                            hasValue={!!data.parent_category}
+                            hasValue={() => !!data.parent_category}
                         >
                             <SelectControl
                                 label={__('Choose parent category')}
-                                value={(currentParentCategorySlug = data.parent_category?.slug) !== null && currentParentCategorySlug !== void 0 ? currentParentCategorySlug : null}
+                                value={(currentParentCategorySlug = data.parent_category?.slug) !== null && currentParentCategorySlug !== void 0 ? currentParentCategorySlug : ''}
                                 onChange={value => {
                                     let category = categories.find(cat => cat.slug === value);
                                     setData({
