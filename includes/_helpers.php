@@ -1,5 +1,7 @@
 <?php
 
+namespace Gzly\Plugin\GzlyPortfolio;
+
 function convert_term_to_response($term)
 {
     $id = get_term_meta($term->term_id, 'term_image', true);

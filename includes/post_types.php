@@ -1,4 +1,5 @@
 <?php
+namespace Gzly\Plugin\GzlyPortfolio;
 
 add_action('init', function() {
     $labels = array(

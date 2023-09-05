@@ -1,4 +1,5 @@
 <?php
+namespace Gzly\Plugin\GzlyPortfolio;
 
 add_action('rest_api_init', function () {
     register_rest_route('gzly-portfolio/v1/backend', '/categories', array(

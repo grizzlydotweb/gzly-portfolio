@@ -1,11 +1,12 @@
 <?php
+namespace Gzly\Plugin\GzlyPortfolio;
 
 function modify_columns($columns) {
     $columns['gzly_categories'] = 'Kategorien';
     $columns['gzly_thumbnail'] = '<div style="float:right;">Vorschaubild</div>';
     return $columns;
 }
-add_filter('manage_gzly_portfolio_posts_columns', 'modify_columns');
+add_filter('manage_gzly_portfolio_posts_columns', 'Gzly\Plugin\GzlyPortfolio\modify_columns');
 
 function column_thumbnail_value($column_name, $post_id) {
     if ($column_name !== 'gzly_thumbnail') {
@@ -33,5 +34,5 @@ function column_category_value($column_name, $post_id) {
     }, $terms));
 }
 
-add_action('manage_posts_custom_column', 'column_thumbnail_value', 10, 2);
-add_action('manage_posts_custom_column', 'column_category_value', 10, 2);
+add_action('manage_posts_custom_column', 'Gzly\Plugin\GzlyPortfolio\column_thumbnail_value', 10, 2);
+add_action('manage_posts_custom_column', 'Gzly\Plugin\GzlyPortfolio\column_category_value', 10, 2);

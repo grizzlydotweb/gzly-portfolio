@@ -1,10 +1,10 @@
 <?php
+namespace Gzly\Plugin\GzlyPortfolio;
 
-function enqueue_media_script() {
+add_action('admin_enqueue_scripts', function () {
     wp_enqueue_media();
     wp_enqueue_script('custom-media', plugins_url('gzly-portfolio-gallery') . '/includes/js/custom-media.js', array('jquery'), null, true);
-}
-add_action('admin_enqueue_scripts', 'enqueue_media_script');
+});
 
 function save_taxonomy_custom_fields( $term_id ) {
     if ( !isset( $_POST['term_meta'] ) ) {
@@ -33,9 +33,9 @@ function render_term_image_field($term) {
     ';
 }
 $taxonomy = CUSTOM_TAXONOMY;
-add_action( "{$taxonomy}_edit_form_fields", 'render_term_image_field', 10, 2 );
-add_action( "{$taxonomy}_add_form_fields", 'render_term_image_field', 10, 1 );
+add_action( "{$taxonomy}_edit_form_fields", 'Gzly\Plugin\GzlyPortfolio\render_term_image_field', 10, 2 );
+add_action( "{$taxonomy}_add_form_fields", 'Gzly\Plugin\GzlyPortfolio\render_term_image_field', 10, 1 );
 
 // Save the changes made on the "presenters" taxonomy, using our callback function
-add_action( "edited_{$taxonomy}", 'save_taxonomy_custom_fields', 10, 2 );
-add_action( "created_{$taxonomy}", 'save_taxonomy_custom_fields', 10, 2 );
+add_action( "edited_{$taxonomy}", 'Gzly\Plugin\GzlyPortfolio\save_taxonomy_custom_fields', 10, 2 );
+add_action( "created_{$taxonomy}", 'Gzly\Plugin\GzlyPortfolio\save_taxonomy_custom_fields', 10, 2 );

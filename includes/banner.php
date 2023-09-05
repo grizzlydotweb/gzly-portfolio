@@ -1,5 +1,7 @@
 <?php
 
+namespace Gzly\Plugin\GzlyPortfolio;
+
 add_action('admin_notices', function() {
     global $post;
     global $taxonomy;
