@@ -37,7 +37,7 @@ GROUP BY
                 }, $result),
             ];
 
-            return rest_ensure_response([...array_map('convert_term_to_response', get_terms($config))]);
+            return rest_ensure_response([...array_map('Gzly\Plugin\GzlyPortfolio\convert_term_to_response', get_terms($config))]);
         }
     ,
     ));

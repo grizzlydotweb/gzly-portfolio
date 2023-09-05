@@ -16,7 +16,7 @@ add_action('rest_api_init', function () {
             if ($parent_term) {
                 $query['child_of'] = $parent_term->term_id;
             }
-            return rest_ensure_response([...array_map('convert_term_to_response', get_terms($query))]);
+            return rest_ensure_response([...array_map('Gzly\Plugin\GzlyPortfolio\convert_term_to_response', get_terms($query))]);
         }
     ,
     ));
@@ -47,7 +47,7 @@ add_action('rest_api_init', function () {
                 $terms = get_the_terms($post->ID, 'gzly_pf_category');
                 $termsResponse = [];
                 if ($terms && !is_wp_error($terms)) {
-                    $termsResponse = array_map('convert_term_to_response', $terms);
+                    $termsResponse = array_map('Gzly\Plugin\GzlyPortfolio\convert_term_to_response', $terms);
                 }
 
                 $imageId = get_post_thumbnail_id($post->ID);
