@@ -1,0 +1,19 @@
+{
+  "name": "dein/wordpress-plugin",
+  "description": "Beschreibung deines Plugins",
+  "type": "wordpress-plugin",
+  "authors": [
+    {
+      "name": "Dein Name",
+      "email": "deine@email.com"
+    }
+  ],
+  "require": {
+    "monolog/monolog": "^2.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "GzlyWpSetup\\": "src/"
+    }
+  }
+}
