@@ -1,6 +1,7 @@
 <?php
 namespace Gzly\Plugin\GzlyPortfolio;
 
+use GzlyWpSetup\Bootstrap;
 use RecursiveDirectoryIterator;
 use RecursiveIteratorIterator;
 
@@ -24,6 +25,7 @@ use RecursiveIteratorIterator;
  * LICENSE: GPLv2
  * LICENSE_URI: https://www.gnu.org/licenses/gpl-2.0.html).
  */
+Bootstrap::init();
 if ( ! defined( 'ABSPATH' ) ) {
     exit; // Exit if accessed directly
 }

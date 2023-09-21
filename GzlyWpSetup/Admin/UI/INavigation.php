@@ -2,7 +2,7 @@
 
 namespace GzlyWpSetup\Admin\UI;
 
-class AbstractNavigation
+interface INavigation
 {
 
 }

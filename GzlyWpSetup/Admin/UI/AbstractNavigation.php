@@ -2,7 +2,17 @@
 
 namespace GzlyWpSetup\Admin\UI;
 
-class AbstractNavigation
+abstract class AbstractNavigation implements INavigation
 {
+
+    public function registerHooks()
+    {
+
+    }
+
+    public function registerActions()
+    {
+
+    }
 
 }
