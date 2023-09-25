@@ -6,5 +6,6 @@ module.exports = {
         ...defaultConfig.entry,
         frontend: './src/frontend.js',
         backend: './src/backend.js',
+        admin_backend: './src/admin_backend.js',
     },
 };

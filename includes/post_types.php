@@ -24,6 +24,10 @@ add_action('init', function() {
     ));
 
     $args = array(
+        'show_ui' => true,
+        'show_in_nav_menus' => false,
+        'show_in_admin_bar' => false,
+        'show_in_rest' => true,
         'labels' => $labels,
         'public' => true,
         'has_archive' => false,

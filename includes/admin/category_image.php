@@ -1,10 +1,6 @@
 <?php
 namespace Gzly\Plugin\GzlyPortfolio;
 
-add_action('admin_enqueue_scripts', function () {
-    wp_enqueue_media();
-    wp_enqueue_script('custom-media', plugins_url('gzly-portfolio-gallery') . '/includes/js/custom-media.js', array('jquery'), null, true);
-});
 
 function save_taxonomy_custom_fields( $term_id ) {
     if ( !isset( $_POST['term_meta'] ) ) {

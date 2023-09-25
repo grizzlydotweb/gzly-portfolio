@@ -1,3 +1,6 @@
+const ReactDOM = require('react-dom');
+console.log(ReactDOM)
+
 import { createRoot } from 'react-dom/client';
 import App from "./frontend/App";
 

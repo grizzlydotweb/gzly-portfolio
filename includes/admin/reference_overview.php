@@ -1,38 +1,49 @@
 <?php
 namespace Gzly\Plugin\GzlyPortfolio;
 
-function modify_columns($columns) {
-    $columns['gzly_categories'] = 'Kategorien';
-    $columns['gzly_thumbnail'] = '<div style="float:right;">Vorschaubild</div>';
-    return $columns;
+if(!class_exists('WP_List_Table')){
+    require_once( ABSPATH . 'wp-admin/includes/class-wp-list-table.php' );
 }
-add_filter('manage_gzly_portfolio_posts_columns', 'Gzly\Plugin\GzlyPortfolio\modify_columns');
-
-function column_thumbnail_value($column_name, $post_id) {
-    if ($column_name !== 'gzly_thumbnail') {
-        return;
-    }
-
-    $image = get_the_post_thumbnail($post_id, 'gzly_pf_reference_column_preview');
-    echo '<div style="float:right;">'. $image .'</div>';
+if(!class_exists('WP_Posts_List_Table')){
+    require_once( ABSPATH . 'wp-admin/includes/class-wp-posts-list-table.php' );
 }
 
-function column_category_value($column_name, $post_id) {
-    if ($column_name !== 'gzly_categories') {
-        return;
+class GzlyCustomTable extends \WP_Posts_List_Table
+{
+    // remove search box
+    public function search_box( $text, $input_id ){ }
+
+    // Your custom list table is here
+    public function display() {
+        echo '<div id="gzly-reference-overview-entrypoint"></div>';
     }
 
-    $terms = get_the_terms($post_id, CUSTOM_TAXONOMY);
 
-    if (!$terms || is_wp_error($terms)) {
-        var_dump($terms);
-        return;
+    public function single_row($post, $level = 0)
+    {
+        $post                = get_post( $post );
+        $thumb = get_the_post_thumbnail($post->ID, 'gzly_pf_reference_column_preview');
+
+        $actions = $this->handle_row_actions($post, '', '');
+
+        return "<div class='gzly-post'>
+    <a class='gzly-post-teaser' href='/wp-admin/post.php?post={$post->ID}&action=edit'>
+        <div class='gzly-post-title'>{$post->post_title}</div>
+        <div class='gzly-post-image'>{$thumb}</div>
+        <div class='gzly-post-categories'>{}</div>
+    </a>
+    <div class='gzly-post-actions'>
+        {$actions}
+    </div>
+</div>";
     }
 
-    echo implode(', ', array_map(function ($term) {
-        return $term->name;
-    }, $terms));
 }
 
-add_action('manage_posts_custom_column', 'Gzly\Plugin\GzlyPortfolio\column_thumbnail_value', 10, 2);
-add_action('manage_posts_custom_column', 'Gzly\Plugin\GzlyPortfolio\column_category_value', 10, 2);
+
+add_filter( 'views_edit-'. CUSTOM_POST_TYPE,  function (){
+
+    global $wp_list_table;
+    $mylisttable = new GzlyCustomTable();
+    $wp_list_table = $mylisttable ;
+});
